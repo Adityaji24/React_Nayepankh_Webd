@@ -1,48 +1,60 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () =>
-      window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav
-      className={`navbar-custom ${
-        scrolled ? "navbar-scrolled" : ""
-      }`}
-    >
+    <nav className="navbar-custom">
+
       <div className="logo">
         NayePankh Foundation
       </div>
 
-      <ul className="nav-links">
+      <ul className={menuOpen ? "nav-links active" : "nav-links"}>
+
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
         </li>
 
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>
+            About
+          </Link>
         </li>
 
         <li>
-          <Link to="/volunteer">Volunteer</Link>
+          <Link to="/gallery" onClick={() => setMenuOpen(false)}>
+            Gallery
+          </Link>
         </li>
 
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/volunteer" onClick={() => setMenuOpen(false)}>
+            Volunteer
+          </Link>
         </li>
+
+        <li>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </Link>
+        </li>
+
       </ul>
+
+      <div
+        className="menu-icon"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
     </nav>
   );
 }
