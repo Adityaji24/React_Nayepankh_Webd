@@ -1,0 +1,27 @@
+body{
+  font-family: Arial, sans-serif;
+}
+
+.hero{
+  height:90vh;
+  background:
+  linear-gradient(
+  rgba(0,0,0,0.5),
+  rgba(0,0,0,0.5)),
+  url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c");
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
